@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:student_app_provider/db/model/student_model.dart';
 
-
 class Editcontroll extends ChangeNotifier {
   void oninit(Studentmodel data) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _id = data.id!;
+      _image = data.image;
       _namecontroller.text = data.name;
       _agecontroller.text = data.age;
       _phonecontroller.text = data.phone;
@@ -19,7 +19,7 @@ class Editcontroll extends ChangeNotifier {
 
   TextEditingController get agecontroller => _agecontroller;
 
-  TextEditingController get phonecontroller => _phonecontroller;
+  TextEditingController get phonecontroller => _phonecontroller; 
 
   TextEditingController get placecontroller => _placecontroller;
 

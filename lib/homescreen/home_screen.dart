@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:student_app_provider/add_student/add_student.dart';
 import 'package:student_app_provider/db/functions/student_controller.dart';
 import 'package:student_app_provider/list_student/list_student.dart';
+import 'package:student_app_provider/search_page/search_screen.dart';
 
 class Homescreen extends StatelessWidget {
   const Homescreen({super.key});
@@ -34,22 +35,22 @@ class Homescreen extends StatelessWidget {
               ),
             ],
           ),
-          // actions: [
-          //   Padding(
-          //     padding: const EdgeInsets.all(8.0),
-          //     child: IconButton(
-          //         onPressed: () {
-          //           showSearch(
-          //             context: context,
-          //             delegate: Search(),
-          //           );
-          //         },
-          //         icon: const Icon(
-          //           Icons.search,
-          //           color: Colors.black,
-          //         )),
-          //   ),
-          // ],
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+                  onPressed: () {
+                    showSearch(
+                      context: context,
+                      delegate: Search(),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  )),
+            ),
+          ],
           backgroundColor: Colors.amber.shade500,
         ),
         body: SafeArea(

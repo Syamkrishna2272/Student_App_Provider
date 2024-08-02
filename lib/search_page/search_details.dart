@@ -1,4 +1,4 @@
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:student_app_provider/db/model/student_model.dart';
 
@@ -17,8 +17,9 @@ class Details extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(right: 60),
             child: Text(
-              'Details',
+              'Student Details',
               textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.w700),
             ),
           ),
         ),
@@ -28,6 +29,18 @@ class Details extends StatelessWidget {
           children: [
             SizedBox(
               height: size.height / 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Container(
+                height: size.height / 2.5,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: FileImage(File(studentdetails.image)))),
+              ),
             ),
             const SizedBox(
               height: 30,
@@ -42,7 +55,7 @@ class Details extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w800,
                       fontSize: 20,
                     ),
                   ),
@@ -54,7 +67,7 @@ class Details extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: Colors.black,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w800,
                         fontSize: 20),
                   ),
                   const SizedBox(
@@ -65,7 +78,7 @@ class Details extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: Colors.black,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w800,
                         fontSize: 20),
                   ),
                   const SizedBox(
@@ -76,7 +89,7 @@ class Details extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: Colors.black,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w800,
                         fontSize: 20),
                   ),
                 ],

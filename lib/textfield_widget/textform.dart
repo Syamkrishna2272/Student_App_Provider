@@ -1,9 +1,9 @@
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:student_app_provider/db/functions/image_picker.dart';
 import 'package:student_app_provider/edit_student/edit_controller.dart';
 import 'package:student_app_provider/snackbar&functions/snack&func.dart';
-
 // ignore: must_be_immutable
 class TextFieldWidget extends StatelessWidget {
   TextEditingController namecontroller;
@@ -18,6 +18,7 @@ class TextFieldWidget extends StatelessWidget {
       {super.key,
       required this.formkey,
       required this.agecontroller,
+      required this.imageController,
       required this.namecontroller,
       required this.phonecontroller,
       required this.placecontroller,
@@ -27,6 +28,7 @@ class TextFieldWidget extends StatelessWidget {
 
   Size size;
   GlobalKey formkey;
+  Imagecontroller imageController;
   bool isfromedit;
   Editcontroll? editcontroller;
 
@@ -44,7 +46,39 @@ class TextFieldWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(40),
                 child: Column(
                   children: [
-                   
+                    Stack(
+                      children: [
+                        isfromedit == true
+                            ? CircleAvatar(
+                                radius: size.height / 17,
+                                backgroundImage: imageController.istrue == true
+                                    ? FileImage(imageController.image1)
+                                    : editcontroller!.image != null
+                                        ? FileImage(
+                                            File(editcontroller!.image!))
+                                        : const AssetImage(
+                                                'assets/images/graduated.png')
+                                            as ImageProvider,
+                              )
+                            : CircleAvatar(
+                                radius: size.height / 17,
+                                backgroundImage: imageController.istrue == true
+                                    ? FileImage(imageController.image1)
+                                    : const AssetImage(
+                                            'assets/images/graduated.png')
+                                        as ImageProvider,
+                              ),
+                        Positioned(
+                          bottom: -10,
+                          right: -12,
+                          child: IconButton(
+                              onPressed: () {
+                                pickimages(imageController, context);
+                              },
+                              icon: const Icon(Icons.add_a_photo)),
+                        ),
+                      ],
+                    ),
                     SizedBox(
                       height: size.height / 38,
                     ),
@@ -153,6 +187,7 @@ class TextFieldWidget extends StatelessWidget {
                                     editcontroller?.phonecontroller.value,
                                     editcontroller?.placecontroller.value,
                                     formkey,
+                                    imageController,
                                     editcontroller,
                                     context);
                               },
@@ -169,6 +204,7 @@ class TextFieldWidget extends StatelessWidget {
                                     agecontroller,
                                     phonecontroller,
                                     placecontroller,
+                                    imageController,
                                     formkey,
                                     context);
                               },

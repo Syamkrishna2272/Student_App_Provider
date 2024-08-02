@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:student_app_provider/db/functions/image_picker.dart';
 import 'package:student_app_provider/db/functions/student_controller.dart';
 import 'package:student_app_provider/edit_student/edit_controller.dart';
 import 'package:student_app_provider/homescreen/home_screen.dart';
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => Studentcontoller()),
         ChangeNotifierProvider(create: (context) => Editcontroll()),
+        ChangeNotifierProvider(create: (context) => Imagecontroller())
       ],
       child: MaterialApp(
         title: 'Student app',

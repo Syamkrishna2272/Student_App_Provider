@@ -1,11 +1,10 @@
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:student_app_provider/db/functions/student_controller.dart';
 import 'package:student_app_provider/db/model/student_model.dart';
 import 'package:student_app_provider/edit_student/edit_controller.dart';
 import 'package:student_app_provider/edit_student/edit_student.dart';
-import 'package:student_app_provider/search/search_details.dart';
 
 // ignore: must_be_immutable
 class GridviewWidget extends StatelessWidget {
@@ -26,11 +25,11 @@ class GridviewWidget extends StatelessWidget {
         itemBuilder: (ctx, index) {
           final data = reversedList[index];
           return InkWell(
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                return Details(studentdetails: data);
-              }));
-            },
+            // onTap: () {
+            //   Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+            //     return Details(studentdetails: data);
+            //   }));
+            // },
             child: Card(
                 color: Colors.amber.shade500,
                 elevation: 10,
@@ -44,6 +43,10 @@ class GridviewWidget extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            CircleAvatar(
+                              radius: 30,
+                              backgroundImage: FileImage(File(data.image)),
+                            ),
                             PopupMenuButton(onSelected: (value) {
                               final control = Provider.of<Editcontroll>(context,
                                   listen: false);

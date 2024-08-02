@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:student_app_provider/db/functions/image_picker.dart';
 import 'package:student_app_provider/db/model/student_model.dart';
 import 'package:student_app_provider/edit_student/edit_controller.dart';
 import 'package:student_app_provider/textfield_widget/textform.dart';
@@ -9,12 +10,13 @@ class Updatepage extends StatelessWidget {
   Updatepage({super.key, this.studentdetails});
   Studentmodel? studentdetails;
 
-
+  Imagecontroller imageController = Imagecontroller();
 
   final GlobalKey<FormState> keybottom = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final imagedata = Provider.of<Imagecontroller>(context);
 
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -32,6 +34,7 @@ class Updatepage extends StatelessWidget {
             return TextFieldWidget(
               formkey: keybottom,
               agecontroller: value.agecontroller,
+              imageController: imagedata,
               namecontroller: value.namecontroller,
               phonecontroller: value.phonecontroller,
               placecontroller: value.placecontroller,

@@ -1,10 +1,10 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:student_app_provider/db/functions/student_controller.dart';
 import 'package:student_app_provider/db/model/student_model.dart';
 import 'package:student_app_provider/edit_student/edit_controller.dart';
 import 'package:student_app_provider/edit_student/edit_student.dart';
-import 'package:student_app_provider/search/search_details.dart';
 
 // ignore: must_be_immutable
 class Listviewmodel extends StatelessWidget {
@@ -21,11 +21,11 @@ class Listviewmodel extends StatelessWidget {
             itemBuilder: (ctx, index) {
               final data = reversedList[index];
               return InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                    return Details(studentdetails: data);
-                  }));
-                },
+                // onTap: () {
+                //   Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                //     return Details(studentdetails: data);
+                //   }));
+                // },
                 child: Card(
                   color: Colors.amber.shade500,
                   elevation: 10,
@@ -34,6 +34,10 @@ class Listviewmodel extends StatelessWidget {
                   child: Column(
                     children: [
                       ListTile(
+                        leading: CircleAvatar(
+                          radius: 34,
+                          backgroundImage: FileImage(File(data.image)),
+                        ),
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

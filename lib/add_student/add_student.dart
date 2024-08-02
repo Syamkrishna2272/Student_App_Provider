@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:student_app_provider/db/functions/image_picker.dart';
 import 'package:student_app_provider/textfield_widget/textform.dart';
 
 // ignore: must_be_immutable
@@ -17,6 +18,7 @@ class Studentadd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imagedata = Provider.of<Imagecontroller>(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
@@ -38,6 +40,7 @@ class Studentadd extends StatelessWidget {
             return TextFieldWidget(
               formkey: formkey,
               agecontroller: agecontroller,
+              imageController: imagedata,
               namecontroller: namecontroller,
               phonecontroller: phonecontroller,
               placecontroller: placecontroller,

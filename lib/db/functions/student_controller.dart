@@ -32,6 +32,7 @@ class Studentcontoller extends ChangeNotifier {
           age TEXT,
           phone TEXT,
           place TEXT,
+          image TEXT
           )''');
     });
     getallstudent();
@@ -39,8 +40,8 @@ class Studentcontoller extends ChangeNotifier {
 
   Future<void> addstudent1(Studentmodel value) async {
     await _db.execute(
-        'INSERT INTO student(name,age,phone,place,)VALUES(?,?,?,?,)',
-        [value.name, value.age, value.phone, value.place, ]);
+        'INSERT INTO student(name,age,phone,place,image)VALUES(?,?,?,?,?)',
+        [value.name, value.age, value.phone, value.place, value.image]);
 
     getallstudent();
     notifyListeners();
@@ -65,13 +66,14 @@ class Studentcontoller extends ChangeNotifier {
   }
 
   Future<void> updatestudent(int id, String name, String age, String phone,
-      String place, ) async {
+      String place, String image) async {
     print('id===$id');
     final data = {
       'name': name,
       'age': age,
       'phone': phone,
       'place': place,
+      'image': image,
     };
     await _db.update('student', data, where: 'id=?', whereArgs: [id]);
     print('updated');
