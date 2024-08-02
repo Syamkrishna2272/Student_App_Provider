@@ -41,19 +41,6 @@ class Search extends SearchDelegate {
             .where((element) =>
                 element.name.toLowerCase().contains(query.toLowerCase()))
             .toList();
-
-        // if (query.isEmpty) {
-        //   return Center(
-        //       child: Lottie.asset(
-        //           height: 120,
-        //           'assets/animation/searching song animation.json'));
-        // } else if (filtered.isEmpty) {
-        //   return Center(
-        //     child: Lottie.asset(
-        //         height: 120,
-        //         'assets/animation/no searched song animation.json'),
-        //   );
-        // }
         if (controller.students.isNotEmpty) {
           return ListView.builder(
             itemBuilder: (ctx, index) {
@@ -104,18 +91,6 @@ class Search extends SearchDelegate {
             .where((element) =>
                 element.name.toLowerCase().contains(query.toLowerCase()))
             .toList();
-        // if (query.isEmpty) {
-        //   return Center(
-        //       child: Lottie.asset(
-        //           height: 120,
-        //           'assets/animation/searching song animation.json'));
-        // } else if (filtered.isEmpty) {
-        //   return Center(
-        //     child: Lottie.asset(
-        //         height: 120,
-        //         'assets/animation/no searched song animation.json'),
-        //   );
-        // }
         if (controller.students.isNotEmpty) {
           return ListView.builder(
             itemBuilder: (ctx, index) {
